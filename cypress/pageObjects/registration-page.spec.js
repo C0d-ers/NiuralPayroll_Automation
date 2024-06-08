@@ -13,6 +13,9 @@ class RegistrationPage {
     confirmPasswordField: 'input[name="confirmPassword"]',
     phoneNumberField: "input[name='phoneNumber']",
     nextButton: "button[type='submit']",
+    accountExistsMessage: ".space-y-2.text-center",
+    termsOfServiceLink: 'a:contains("Terms of Service")',
+    privacyPolicyLink: 'a:contains("Privacy Policy")',
   };
 
   enterFirstName(firstName) {
@@ -58,6 +61,34 @@ class RegistrationPage {
 
   clickNextButton() {
     cy.get(this.locators.nextButton).click();
+  }
+  verifyTermsOfServiceHyperLink() {
+    cy.get(this.locators.termsOfServiceLink).should(
+      "have.attr",
+      "href",
+      "https://www.niural.com/legal/customer-terms-of-service"
+    );
+  }
+
+  verifyPrivacyPolicyLink() {
+    cy.get(this.locators.privacyPolicyLink).should(
+      "have.attr",
+      "href",
+      "https://www.niural.com/privacy-policy"
+    );
+  }
+
+  verifyAccountAlreadyExistsPopup(email) {
+    cy.get("h3").should("be.visible").and("have.text", "Account Exists");
+
+    cy.get(this.locators.accountExistsMessage)
+      .should("be.visible")
+      .and(
+        "have.text",
+        "An account with " +
+          email +
+          " already existsPlease signin using this email."
+      );
   }
 }
 

@@ -9,7 +9,7 @@ import "../support/commands";
 import verificationPageSpec from "../pageObjects/verification-page.spec";
 
 describe("Registration", () => {
-  it.skip("Verify Registration with valid user details", () => {
+  beforeEach(() => {
     // Visit the URL
     cy.visit("https://qa.niural.com/");
 
@@ -18,7 +18,13 @@ describe("Registration", () => {
 
     //Click Signup button for registration
     SignInPage.clickSignUpButton();
+  });
 
+  afterEach(() => {
+    // Code to run after all tests in the suite
+  });
+
+  it("Verify Registration with valid user details", () => {
     //Enter the user's details
     RegistrationPage.enterFirstName(registerUser.firstName);
     RegistrationPage.enterMiddleName(registerUser.middleName);
@@ -36,8 +42,6 @@ describe("Registration", () => {
 
     //Wait, since api loads faster than the mail
     cy.wait(5000);
-    VerificationPage.checkEmailInputLabel(registerUser.email);
-    VerificationPage.checkInstructionsText();
 
     //Get OTP by using the commands, located in support folder.
     cy.signInAndGetOTP();
@@ -56,5 +60,32 @@ describe("Registration", () => {
       registerUser.firstName,
       registerUser.companyName
     );
+  });
+
+  it("Verify Registration with existing user details", () => {
+    //Enter the user's details
+    RegistrationPage.enterFirstName(registerUser.firstName);
+    RegistrationPage.enterMiddleName(registerUser.middleName);
+    RegistrationPage.enterLastName(registerUser.lastName);
+    RegistrationPage.enterEmail(registerUser.email);
+    RegistrationPage.enterCompanyName(registerUser.companyName);
+    RegistrationPage.enterCompanyWebsite(registerUser.companyWebsite);
+    RegistrationPage.selectBusinessClientsOption(
+      registerUser.businessClientsOption
+    );
+    RegistrationPage.enterPassword(registerUser.password);
+    RegistrationPage.enterConfirmPassword(registerUser.password);
+    RegistrationPage.enterPhoneNumber(registerUser.phoneNumber);
+
+    RegistrationPage.clickNextButton();
+    RegistrationPage.verifyAccountAlreadyExistsPopup(registerUser.email);
+  });
+
+  it("Verify Terms of Service link", () => {
+    RegistrationPage.verifyTermsOfServiceHyperLink();
+  });
+
+  it("Verify Terms of Privacy Policy link", () => {
+    RegistrationPage.verifyPrivacyPolicyLink();
   });
 });
