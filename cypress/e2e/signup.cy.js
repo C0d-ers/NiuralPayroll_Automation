@@ -6,7 +6,6 @@ import SignInPage from "../pageObjects/signIn-page.spec";
 
 import { registerUser } from "../testdata";
 import "../support/commands";
-import verificationPageSpec from "../pageObjects/verification-page.spec";
 
 describe("Registration", () => {
   beforeEach(() => {
