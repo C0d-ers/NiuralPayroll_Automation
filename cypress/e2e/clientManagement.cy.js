@@ -1,10 +1,10 @@
 // Importing page objects
-import RoleSelectionPage from "../pageObjects/roleSelection-page.spec";
-import WelcomePage from "../pageObjects/welcome-page.spec";
-import SignInPage from "../pageObjects/signIn-page.spec";
-import ClientDetailsPage from "../pageObjects/clientDetails-page.spec";
-import ClientListPage from "../pageObjects/clientList-page.spec";
-import AccountantDashboardPage from "../pageObjects/accountantDashboard-page.spec";
+import RoleSelectionPage from "../pageObjects/Role/roleSelection-page.spec";
+import WelcomePage from "../pageObjects/ClientHanding/clientWelcome-page.spec";
+import SignInPage from "../pageObjects/Role/signIn-page.spec";
+import ClientDetailsPage from "../pageObjects/ClientHanding/clientDetails-page.spec";
+import ClientListPage from "../pageObjects/ClientHanding/clientList-page.spec";
+import AccountantDashboardPage from "../pageObjects/LandingPage/accountantDashboard-page.spec";
 
 // Importing test data
 import { registerUser, clientRegistration } from "../testdata";

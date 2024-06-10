@@ -1,8 +1,8 @@
-import RegistrationPage from "../pageObjects/registration-page.spec";
-import VerificationPage from "../pageObjects/verification-page.spec";
-import RoleSelectionPage from "../pageObjects/roleSelection-page.spec";
-import AccountantDashboardPage from "../pageObjects/accountantDashboard-page.spec";
-import SignInPage from "../pageObjects/signIn-page.spec";
+import RegistrationPage from "../pageObjects/Registration/registration-page.spec";
+import VerificationPage from "../pageObjects/Registration/verification-page.spec";
+import RoleSelectionPage from "../pageObjects/Role/roleSelection-page.spec";
+import AccountantDashboardPage from "../pageObjects/LandingPage/accountantDashboard-page.spec";
+import SignInPage from "../pageObjects/Role/signIn-page.spec";
 
 import { registerUser } from "../testdata";
 import "../support/commands";

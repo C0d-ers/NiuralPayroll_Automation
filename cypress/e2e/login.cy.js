@@ -1,6 +1,6 @@
-import RoleSelectionPage from "../pageObjects/roleSelection-page.spec";
-import AccountantDashboardPage from "../pageObjects/accountantDashboard-page.spec";
-import SignInPage from "../pageObjects/signIn-page.spec";
+import RoleSelectionPage from "../pageObjects/Role/roleSelection-page.spec";
+import AccountantDashboardPage from "../pageObjects/LandingPage/accountantDashboard-page.spec";
+import SignInPage from "../pageObjects/Role/signIn-page.spec";
 import { registerUser } from "../testdata";
 
 describe("Login", () => {
@@ -43,7 +43,7 @@ describe("Login", () => {
     RoleSelectionPage.selectRole("Niural Partners");
 
     SignInPage.enterEmail("test@mail.np");
-    SignInPage.enterPassword("passwd098123");
+    SignInPage.enterPassword("passwd!A098123");
     SignInPage.clickLoginButton();
 
     SignInPage.verifyInvalidCredentialPrompt();
