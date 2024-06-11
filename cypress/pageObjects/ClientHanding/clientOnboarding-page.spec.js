@@ -12,7 +12,7 @@ class ClientOnboardingPage {
     selectCompanyNumberMembers: "#select-company-number-members",
     selectPhoneExtension: "#select-phone-extension",
     phoneNumberInput: 'input[type="number"]',
-    nextButton: "button:contains('Next')",
+    nextButton: '[data-cy="button-next"]',
     toast: ".Toastify__toast-body",
   };
 

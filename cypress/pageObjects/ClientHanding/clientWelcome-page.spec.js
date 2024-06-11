@@ -1,4 +1,4 @@
-class WelcomePage {
+class ClientWelcomePage {
   addClientTexts = [
     "Add a client",
     "Setup new client for your firm to manage",
@@ -54,4 +54,4 @@ class WelcomePage {
   }
 }
 
-export default new WelcomePage();
+export default new ClientWelcomePage();

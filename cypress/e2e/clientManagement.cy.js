@@ -2,7 +2,7 @@
 import RoleSelectionPage from "../pageObjects/Role/roleSelection-page.spec";
 import WelcomePage from "../pageObjects/ClientHanding/clientWelcome-page.spec";
 import SignInPage from "../pageObjects/Role/signIn-page.spec";
-import ClientDetailsPage from "../pageObjects/ClientHanding/clientDetails-page.spec";
+import ClientOnboardingPage from "../pageObjects/ClientHanding/clientDetails-page.spec";
 import ClientListPage from "../pageObjects/ClientHanding/clientList-page.spec";
 import AccountantDashboardPage from "../pageObjects/LandingPage/accountantDashboard-page.spec";
 
@@ -40,25 +40,27 @@ describe("Client Management", () => {
     WelcomePage.clickFinalAddClient();
 
     // Fill client details
-    ClientDetailsPage.fillCompanyName(clientRegistration.companyName);
-    ClientDetailsPage.fillDBAName(clientRegistration.dbaName);
-    ClientDetailsPage.fillNumberOfCurrentEmployees(
+    ClientOnboardingPage.fillCompanyName(clientRegistration.companyName);
+    ClientOnboardingPage.fillDBAName(clientRegistration.dbaName);
+    ClientOnboardingPage.fillNumberOfCurrentEmployees(
       clientRegistration.numOfCurrentEmployee
     );
-    ClientDetailsPage.fillNumberOfCurrentContractors(
+    ClientOnboardingPage.fillNumberOfCurrentContractors(
       clientRegistration.numOfCurrentContractors
     );
-    ClientDetailsPage.fillFirstName(clientRegistration.firstName);
-    ClientDetailsPage.fillLastName(clientRegistration.lastName);
-    ClientDetailsPage.fillEmail(clientRegistration.email);
-    ClientDetailsPage.fillCompanyWebsite(clientRegistration.companyWebsite);
-    ClientDetailsPage.selectEmployeeNumber(clientRegistration.employeeNumber);
-    ClientDetailsPage.fillPhoneNumber(
+    ClientOnboardingPage.fillFirstName(clientRegistration.firstName);
+    ClientOnboardingPage.fillLastName(clientRegistration.lastName);
+    ClientOnboardingPage.fillEmail(clientRegistration.email);
+    ClientOnboardingPage.fillCompanyWebsite(clientRegistration.companyWebsite);
+    ClientOnboardingPage.selectEmployeeNumber(
+      clientRegistration.employeeNumber
+    );
+    ClientOnboardingPage.fillPhoneNumber(
       clientRegistration.phoneExtension,
       clientRegistration.phoneNumber
     );
-    ClientDetailsPage.clickNextButton();
-    ClientDetailsPage.verifySuccessfulToast();
+    ClientOnboardingPage.clickNextButton();
+    ClientOnboardingPage.verifySuccessfulToast();
   });
 
   it("Verification of newly added client", () => {
