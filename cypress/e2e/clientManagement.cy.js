@@ -1,17 +1,18 @@
 // Importing page objects
 import RoleSelectionPage from "../pageObjects/Role/roleSelection-page.spec";
-import WelcomePage from "../pageObjects/ClientHanding/clientWelcome-page.spec";
+import ClientWelcomePage from "../pageObjects/ClientHanding/clientWelcome-page.spec";
+import ClientListPage from "../pageObjects/NiuralPartnerLogin/clientList-page.spec";
 import SignInPage from "../pageObjects/Role/signIn-page.spec";
-import ClientOnboardingPage from "../pageObjects/ClientHanding/clientDetails-page.spec";
-import ClientListPage from "../pageObjects/ClientHanding/clientList-page.spec";
-import AccountantDashboardPage from "../pageObjects/LandingPage/accountantDashboard-page.spec";
+import ClientOnboardingPage from "../pageObjects/ClientHanding/clientOnboarding-page.spec";
+
+import AccountantDashboardPage from "../pageObjects/NiuralPartnerLogin/accountantDashboard-page.spec";
 
 // Importing test data
 import { registerUser, clientRegistration } from "../testdata";
 
 describe("Client Management", () => {
   beforeEach(() => {
-    cy.visit("");
+    cy.visit("/");
 
     RoleSelectionPage.selectRole("Niural Partners");
 
@@ -28,16 +29,16 @@ describe("Client Management", () => {
 
   it("Addition of new client", () => {
     // Verify text on client welcome page
-    WelcomePage.verifyAddClientTexts();
+    ClientWelcomePage.verifyAddClientTexts();
     // Click on 'Add Client' button
-    WelcomePage.clickAddClient();
+    ClientWelcomePage.clickAddClient();
 
     // Verify text on revenue sharing page
-    WelcomePage.verifyRevenueSharingTexts();
+    ClientWelcomePage.verifyRevenueSharingTexts();
     // Click on revenue sharing checkbox
-    WelcomePage.clickRevenueSharingCheckBox();
+    ClientWelcomePage.clickRevenueSharingCheckBox();
     // Click on final 'Add Client' button
-    WelcomePage.clickFinalAddClient();
+    ClientWelcomePage.clickFinalAddClient();
 
     // Fill client details
     ClientOnboardingPage.fillCompanyName(clientRegistration.companyName);
@@ -65,7 +66,7 @@ describe("Client Management", () => {
 
   it("Verification of newly added client", () => {
     //Navigate to client list pages
-    WelcomePage.clickSideMenuClient();
+    ClientWelcomePage.clickSideMenuClient();
 
     // Verify newly added client details on the client list page
     ClientListPage.verifyCompanyDisplayed(clientRegistration.companyName);

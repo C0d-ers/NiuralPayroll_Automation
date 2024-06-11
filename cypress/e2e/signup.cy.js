@@ -1,7 +1,7 @@
-import RegistrationPage from "../pageObjects/Registration/registration-page.spec";
-import VerificationPage from "../pageObjects/Registration/verification-page.spec";
+import RegistrationPage from "../pageObjects/NiuralPartnerRegistration/registration-page.spec";
+import VerificationPage from "../pageObjects/NiuralPartnerRegistration/verification-page.spec";
 import RoleSelectionPage from "../pageObjects/Role/roleSelection-page.spec";
-import AccountantDashboardPage from "../pageObjects/LandingPage/accountantDashboard-page.spec";
+import AccountantDashboardPage from "../pageObjects/NiuralPartnerLogin/accountantDashboard-page.spec";
 import SignInPage from "../pageObjects/Role/signIn-page.spec";
 
 import { registerUser } from "../testdata";

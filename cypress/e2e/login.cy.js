@@ -1,5 +1,5 @@
 import RoleSelectionPage from "../pageObjects/Role/roleSelection-page.spec";
-import AccountantDashboardPage from "../pageObjects/LandingPage/accountantDashboard-page.spec";
+import AccountantDashboardPage from "../pageObjects/NiuralPartnerLogin/accountantDashboard-page.spec";
 import SignInPage from "../pageObjects/Role/signIn-page.spec";
 import { registerUser } from "../testdata";
 
