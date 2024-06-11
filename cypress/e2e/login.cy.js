@@ -4,12 +4,18 @@ import SignInPage from "../pageObjects/Role/signIn-page.spec";
 import { registerUser } from "../testdata";
 
 describe("Login", () => {
-  it("Verify login with valid credentials", () => {
-    cy.visit("https://qa.niural.com/");
+  beforeEach(() => {
+    // Visit the URL
+    cy.visit("/");
 
     //Select Role for further process
     RoleSelectionPage.selectRole("Niural Partners");
+  });
 
+  afterEach(() => {
+    // Code to run after all tests in the suite
+  });
+  it("Verify login with valid credentials", () => {
     SignInPage.enterEmail(registerUser.email);
     SignInPage.enterPassword(registerUser.password);
     SignInPage.clickLoginButton();
@@ -21,11 +27,6 @@ describe("Login", () => {
     );
   });
   it("Verify login with invalid credentials (valid email)", () => {
-    cy.visit("https://qa.niural.com/");
-
-    //Select Role for further process
-    RoleSelectionPage.selectRole("Niural Partners");
-
     SignInPage.enterEmail(registerUser.email);
     SignInPage.enterPassword("paSsword@098123");
     SignInPage.clickLoginButton();
@@ -37,11 +38,6 @@ describe("Login", () => {
   });
 
   it("Verify login with invalid credentials", () => {
-    cy.visit("https://qa.niural.com/");
-
-    //Select Role for further process
-    RoleSelectionPage.selectRole("Niural Partners");
-
     SignInPage.enterEmail("test@mail.np");
     SignInPage.enterPassword("passwd!A098123");
     SignInPage.clickLoginButton();

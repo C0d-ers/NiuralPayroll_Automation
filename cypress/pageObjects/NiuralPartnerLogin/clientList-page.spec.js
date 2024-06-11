@@ -16,6 +16,9 @@ class ClientListPage {
       .should("be.visible")
       .should("contain", clientEmail);
   }
+  clickClientDisplayed(clientName) {
+    cy.contains(".sc-dhKdcB", clientName).click();
+  }
 }
 
 export default new ClientListPage();

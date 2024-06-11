@@ -1,4 +1,4 @@
-class ClientDetailsPage {
+class ClientOnboardingPage {
   locators = {
     form: "form",
     companyName: "#companyName",
@@ -105,4 +105,4 @@ class ClientDetailsPage {
   }
 }
 
-export default new ClientDetailsPage();
+export default new ClientOnboardingPage();

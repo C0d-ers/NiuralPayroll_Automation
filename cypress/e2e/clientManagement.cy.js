@@ -11,7 +11,7 @@ import { registerUser, clientRegistration } from "../testdata";
 
 describe("Client Management", () => {
   beforeEach(() => {
-    cy.visit("https://qa.niural.com/");
+    cy.visit("");
 
     RoleSelectionPage.selectRole("Niural Partners");
 
