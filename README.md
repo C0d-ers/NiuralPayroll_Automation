@@ -52,13 +52,13 @@ NIURALPAYROLL_AUTOMATION
 │ │ ├── e2e.js // Handles imports (work in progress)                                                                                                                                                                                                 
 │ ├── videos // Contains videos of the test runs                                                                                                                                                                                                     
 │ ├── testdata.js // Contains test data used by the scripts                                                                                                                                                                                          
-├── node_modules
-├── report.json
-├── result.json // Summary report of test execution in JSON format
-├── .gitignore // Specifies files to ignore in git
-├── cypress.config.js // Basic Cypress configuration like timeout and URL
-├── package-lock.json
-├── package.json
+├── node_modules                                                                                                                                                                                                                                     
+├── report.json                                                                                                                                                                                                                                      
+├── result.json // Summary report of test execution in JSON format                                                                                                                                                                                   
+├── .gitignore // Specifies files to ignore in git                                                                                                                                                                                                   
+├── cypress.config.js // Basic Cypress configuration like timeout and URL                                                                                                                                                                            
+├── package-lock.json                                                                                                                                                                                                                                
+├── package.json                                                                                                                                                                                                                                     
 
 Running Tests
 To run all test scripts, use the following command: 
