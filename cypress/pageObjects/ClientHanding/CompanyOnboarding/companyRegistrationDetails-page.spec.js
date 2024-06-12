@@ -32,7 +32,6 @@ class CompanyRegistrationDetailsPage {
   selectDropdownOption(dropdownSelector, labelText, option) {
     this.verifyElementVisibleWithText(this.locators.form, labelText);
     cy.get(dropdownSelector).first().click().type(`${option}{enter}`);
-    //cy.get(dropdownSelector).contains(option).should("be.visible");
   }
 
   verifyCompanyDetailsSection() {
