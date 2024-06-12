@@ -22,7 +22,7 @@ Setup
   2. Install the required plugins and dependencies
      npm install
 
-## Folder Structure
+## Folder Structure                                                                                                                                                                                                                                                               
 NIURALPAYROLL_AUTOMATION
 ├── cypress                                                                                                                                                                                                                                          
 │ ├── e2e // Contains the test scripts for system verification                                                                                                                                                                                       
