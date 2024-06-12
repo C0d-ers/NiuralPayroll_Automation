@@ -1,3 +1,4 @@
+//This are api calls of website called "Mailosaur". These api will help to verify the email during our signup of Niural partner.
 Cypress.Commands.add("signInAndGetOTP", () => {
   cy.request({
     method: "POST",

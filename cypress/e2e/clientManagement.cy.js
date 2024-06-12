@@ -8,7 +8,7 @@ import ClientOnboardingPage from "../pageObjects/ClientHanding/clientOnboarding-
 import AccountantDashboardPage from "../pageObjects/NiuralPartnerLogin/accountantDashboard-page.spec";
 
 // Importing test data
-import { registerUser, clientRegistration } from "../testdata";
+import { adminUser, clientRegistration } from "../testdata";
 
 describe("Client Management", () => {
   beforeEach(() => {
@@ -16,14 +16,12 @@ describe("Client Management", () => {
 
     RoleSelectionPage.selectRole("Niural Partners");
 
-    SignInPage.enterEmail(registerUser.email);
-    SignInPage.enterPassword(registerUser.password);
-    SignInPage.clickLoginButton();
+    SignInPage.performLogin(adminUser.email, adminUser.password);
 
     // Verify successful login
     AccountantDashboardPage.verifyLogin(
-      registerUser.firstName,
-      registerUser.companyName
+      adminUser.firstName,
+      adminUser.companyName
     );
   });
 

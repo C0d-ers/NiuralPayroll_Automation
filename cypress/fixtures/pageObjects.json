@@ -1,0 +1,14 @@
+{
+  "RoleSelectionPage": "../pageObjects/Role/roleSelection-page.spec",
+  "ClientWelcomePage": "../pageObjects/ClientHanding/clientWelcome-page.spec",
+  "SignInPage": "../pageObjects/Role/signIn-page.spec",
+  "ClientListPage": "../pageObjects/NiuralPartnerLogin/clientList-page.spec",
+  "ClientOnboardingPage": "../pageObjects/ClientHanding/clientOnboarding-page.spec",
+  "AccountantDashboardPage": "../pageObjects/NiuralPartnerLogin/accountantDashboard-page.spec",
+  "CompanyRegistrationWelcomePage": "../pageObjects/ClientHanding/CompanyOnboarding/companyRegistrationWelcome-page.spec",
+  "NiuralServiceOverviewPage": "../pageObjects/ClientHanding/CompanyOnboarding/niuralServiceOverview-page.spec",
+  "CompanyRegistrationDetailsPage": "../pageObjects/ClientHanding/CompanyOnboarding/companyRegistrationDetails-page.spec",
+  "CompanyRegistrationAddressPage": "../pageObjects/ClientHanding/CompanyOnboarding/companyRegistrationAddress-page.spec",
+  "RegistrationPage": "../pageObjects/NiuralPartnerRegistration/registration-page.spec",
+  "VerificationPage": "../pageObjects/NiuralPartnerRegistration/verification-page.spec"
+}

@@ -55,6 +55,11 @@ class SignInPage {
       "Login attempts exceeded"
     );
   }
+  performLogin(email, password) {
+    this.enterEmail(email);
+    this.enterPassword(password);
+    this.clickLoginButton();
+  }
 }
 
 export default new SignInPage();

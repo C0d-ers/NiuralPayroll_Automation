@@ -1,23 +1,28 @@
 class ClientListPage {
+  locators = {
+    clientItem: ".sc-dhKdcB",
+  };
+
   verifyCompanyDisplayed(companyName) {
-    cy.contains(".sc-dhKdcB", companyName)
+    cy.contains(this.locators.clientItem, companyName)
       .should("be.visible")
       .should("contain", companyName);
   }
 
   verifyClientNameDisplayed(clientName) {
-    cy.contains(".sc-dhKdcB", clientName)
+    cy.contains(this.locators.clientItem, clientName)
       .should("be.visible")
       .should("contain", clientName);
   }
 
   verifyClientEmailDisplayed(clientEmail) {
-    cy.contains(".sc-dhKdcB", clientEmail)
+    cy.contains(this.locators.clientItem, clientEmail)
       .should("be.visible")
       .should("contain", clientEmail);
   }
+
   clickClientDisplayed(clientName) {
-    cy.contains(".sc-dhKdcB", clientName).click();
+    cy.contains(this.locators.clientItem, clientName).click();
   }
 }
 
