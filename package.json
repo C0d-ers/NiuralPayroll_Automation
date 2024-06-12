@@ -1,5 +1,10 @@
 {
   "devDependencies": {
-    "cypress": "^13.11.0"
+    "cypress": "^13.11.0",
+    "mocha": "^10.4.0",
+    "mocha-json-reporter": "^1.0.0-1"
+  },
+  "scripts": {
+    "test:e2e": "cypress run --spec 'cypress/e2e/**/*.cy.js'"
   }
 }

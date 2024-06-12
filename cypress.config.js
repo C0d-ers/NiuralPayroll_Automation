@@ -6,4 +6,9 @@ module.exports = {
     baseUrl: "https://qa.niural.com/",
     defaultCommandTimeout: 15000,
   },
+  reporter: "mocha-json-reporter", // Change the reporter to mocha-json-reporter
+  reporterOptions: {
+    reportDir: "report",
+  },
+  video: true,
 };
