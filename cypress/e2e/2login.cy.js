@@ -1,7 +1,7 @@
 import RoleSelectionPage from "../pageObjects/Role/roleSelection-page.spec";
 import AccountantDashboardPage from "../pageObjects/NiuralPartnerLogin/accountantDashboard-page.spec";
 import SignInPage from "../pageObjects/Role/signIn-page.spec";
-import { registerUser } from "../testdata";
+import { loginUser } from "../testdata";
 
 describe("Login", () => {
   beforeEach(() => {
@@ -16,18 +16,18 @@ describe("Login", () => {
     // Code to run after all tests in the suite
   });
   it("Verify login with valid credentials", () => {
-    SignInPage.enterEmail(registerUser.email);
-    SignInPage.enterPassword(registerUser.password);
+    SignInPage.enterEmail(loginUser.email);
+    SignInPage.enterPassword(loginUser.password);
     SignInPage.clickLoginButton();
 
     // Verify successful registration
     AccountantDashboardPage.verifyLogin(
-      registerUser.firstName,
-      registerUser.companyName
+      loginUser.firstName,
+      loginUser.companyName
     );
   });
   it("Verify login with invalid credentials (valid email)", () => {
-    SignInPage.enterEmail(registerUser.email);
+    SignInPage.enterEmail(loginUser.email);
     SignInPage.enterPassword("paSsword@098123");
     SignInPage.clickLoginButton();
 
@@ -51,8 +51,8 @@ describe("Login", () => {
     //Select Role for further process
     RoleSelectionPage.selectRole("Niural Partners");
 
-    SignInPage.enterEmail("bijay.chaudhary.01@mail7.io");
-    SignInPage.enterPassword("Bijay@123456");
+    SignInPage.enterEmail(loginUser.email);
+    SignInPage.enterPassword("Pass@Word9867");
     SignInPage.clickLoginButton();
     SignInPage.clickLoginButton();
     SignInPage.clickLoginButton();
