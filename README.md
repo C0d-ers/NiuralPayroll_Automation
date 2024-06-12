@@ -22,41 +22,41 @@ Setup
   2. Install the required plugins and dependencies
      npm install
 
-Folder Structure
+## Folder Structure
 NIURALPAYROLL_AUTOMATION
 ├── cypress
-│   ├── e2e                    // Contains the test scripts for system verification
-│   │   ├── 1signup.cy.js
-│   │   ├── 2login.cy.js
-│   │   ├── 3clientManagement.cy.js
-│   │   ├── 4clientCompanyOnboarding.cy.js
-│   ├── fixtures
-│   │   ├── pageObjects.json   // Handles imports (work in progress)
-│   ├── pageObjects            // Structured for the Page Object Model (POM)
-│   │   ├── ClientHandling
-│   │   │   ├── CompanyOnboarding
-│   │   │   │   ├── clientOnboarding-page.spec.js
-│   │   │   │   ├── clientWelcome-page.spec.js
-│   │   ├── NiuralPartnerLogin
-│   │   │   ├── accountantDashboard-page.spec.js
-│   │   │   ├── clientList-page.spec.js
-│   │   ├── NiuralPartnerRegistration
-│   │   │   ├── registration-page.spec.js
-│   │   │   ├── verification-page.spec.js
-│   │   ├── Role
-│   │   │   ├── roleSelection-page.spec.js
-│   │   ├── signIn-page.spec.js
-│   ├── screenshots            // Contains screenshots if any test scripts fail
-│   ├── support                // Useful for writing reusable code
-│   │   ├── commands.js        // Contains reusable code like OTP fetching
-│   │   ├── e2e.js             // Handles imports (work in progress)
-│   ├── videos                 // Contains videos of the test runs
-│   ├── testdata.js            // Contains test data used by the scripts
+│ ├── e2e // Contains the test scripts for system verification
+│ │ ├── 1signup.cy.js
+│ │ ├── 2login.cy.js
+│ │ ├── 3clientManagement.cy.js
+│ │ ├── 4clientCompanyOnboarding.cy.js
+│ ├── fixtures
+│ │ ├── pageObjects.json // Handles imports (work in progress)
+│ ├── pageObjects // Structured for the Page Object Model (POM)
+│ │ ├── ClientHandling
+│ │ │ ├── CompanyOnboarding
+│ │ │ │ ├── clientOnboarding-page.spec.js
+│ │ │ │ ├── clientWelcome-page.spec.js
+│ │ ├── NiuralPartnerLogin
+│ │ │ ├── accountantDashboard-page.spec.js
+│ │ │ ├── clientList-page.spec.js
+│ │ ├── NiuralPartnerRegistration
+│ │ │ ├── registration-page.spec.js
+│ │ │ ├── verification-page.spec.js
+│ │ ├── Role
+│ │ │ ├── roleSelection-page.spec.js
+│ │ ├── signIn-page.spec.js
+│ ├── screenshots // Contains screenshots if any test scripts fail
+│ ├── support // Useful for writing reusable code
+│ │ ├── commands.js // Contains reusable code like OTP fetching
+│ │ ├── e2e.js // Handles imports (work in progress)
+│ ├── videos // Contains videos of the test runs
+│ ├── testdata.js // Contains test data used by the scripts
 ├── node_modules
 ├── report.json
-├── result.json                // Summary report of test execution in JSON format
-├── .gitignore                 // Specifies files to ignore in git
-├── cypress.config.js          // Basic Cypress configuration like timeout and URL
+├── result.json // Summary report of test execution in JSON format
+├── .gitignore // Specifies files to ignore in git
+├── cypress.config.js // Basic Cypress configuration like timeout and URL
 ├── package-lock.json
 ├── package.json
 
