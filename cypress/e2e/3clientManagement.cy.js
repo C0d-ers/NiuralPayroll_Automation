@@ -2,13 +2,14 @@
 import RoleSelectionPage from "../pageObjects/Role/roleSelection-page.spec";
 import ClientWelcomePage from "../pageObjects/ClientHanding/clientWelcome-page.spec";
 import ClientListPage from "../pageObjects/NiuralPartnerLogin/clientList-page.spec";
-import SignInPage from "../pageObjects/Role/signIn-page.spec";
 import ClientOnboardingPage from "../pageObjects/ClientHanding/clientOnboarding-page.spec";
 
 import AccountantDashboardPage from "../pageObjects/NiuralPartnerLogin/accountantDashboard-page.spec";
+import { login } from "../support/commands";
 
 // Importing test data
-import { adminUser, clientRegistration } from "../testdata";
+import { adminUser } from "../fixtures/NiuralPartnerUser_TestData";
+import { clientRegistration } from "../fixtures/ClientDetails_TestData";
 
 describe("Client Management", () => {
   beforeEach(() => {
@@ -16,8 +17,7 @@ describe("Client Management", () => {
 
     RoleSelectionPage.selectRole("Niural Partners");
 
-    SignInPage.performLogin(adminUser.email, adminUser.password);
-
+    login(adminUser.email, adminUser.password);
     // Verify successful login
     AccountantDashboardPage.verifyLogin(
       adminUser.firstName,

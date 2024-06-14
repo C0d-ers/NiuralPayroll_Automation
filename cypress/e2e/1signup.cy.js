@@ -4,7 +4,8 @@ import RoleSelectionPage from "../pageObjects/Role/roleSelection-page.spec";
 import AccountantDashboardPage from "../pageObjects/NiuralPartnerLogin/accountantDashboard-page.spec";
 import SignInPage from "../pageObjects/Role/signIn-page.spec";
 
-import { registerUser } from "../testdata";
+import { registerUser } from "../fixtures/NiuralPartnerUser_TestData";
+
 import "../support/commands";
 
 describe("Registration", () => {

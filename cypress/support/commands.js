@@ -58,3 +58,12 @@ Cypress.Commands.add("signInAndGetOTP", () => {
     });
   });
 });
+
+//These commands are used for better code redability and usability
+import SignInPage from "../pageObjects/Role/signIn-page.spec";
+
+Cypress.Commands.add("Login", (email, password) => {
+  SignInPage.enterEmail(email);
+  SignInPage.enterPassword(password);
+  SignInPage.clickLoginButton();
+});
