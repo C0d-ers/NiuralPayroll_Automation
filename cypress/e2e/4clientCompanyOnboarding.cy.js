@@ -8,7 +8,10 @@ import CompanyRegistrationWelcomePage from "../pageObjects/ClientHanding/Company
 import NiuralServiceOverviewPage from "../pageObjects/ClientHanding/CompanyOnboarding/niuralServiceOverview-page.spec";
 import CompanyRegistrationDetailsPage from "../pageObjects/ClientHanding/CompanyOnboarding/companyRegistrationDetails-page.spec";
 import CompanyRegistrationAddressPage from "../pageObjects/ClientHanding/CompanyOnboarding/companyRegistrationAddress-page.spec";
-import { adminUser, registeredClient, registerCompany } from "../testdata";
+
+import { adminUser } from "../fixtures/NiuralPartnerUser_TestData";
+import { registeredClient } from "../fixtures/ClientDetails_TestData";
+import { registerCompany } from "../fixtures/CompanyDetails_TestData";
 
 describe("Client Company Onboarding", () => {
   it("Verify valid onboarding of client's company", () => {

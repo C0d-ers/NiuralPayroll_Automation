@@ -1,9 +1,7 @@
 import RoleSelectionPage from "../pageObjects/Role/roleSelection-page.spec";
 import AccountantDashboardPage from "../pageObjects/NiuralPartnerLogin/accountantDashboard-page.spec";
 import SignInPage from "../pageObjects/Role/signIn-page.spec";
-import { loginUser } from "../testdata";
-
-import { Login } from "../support/commands";
+import { loginUser } from "../fixtures/NiuralPartnerUser_TestData";
 
 describe("Login", () => {
   beforeEach(() => {
@@ -31,7 +29,7 @@ describe("Login", () => {
     );
   });
   it("Verify login with invalid credentials (valid email)", () => {
-    cy.Login(loginUser.email, "paSsword@098123");
+    cy.Login(loginUser.email, loginUser.invalidPassword);
 
     //Verification of message during first invalid passowrd attempt
     SignInPage.verifyInvalidCredentialPrompt();
@@ -43,13 +41,13 @@ describe("Login", () => {
   });
 
   it("Verify login with invalid credentials", () => {
-    cy.Login("test@mail.np", "paSsword@098123");
+    cy.Login(loginUser.invalidEmail, loginUser.invalidPassword);
     //Verification of message with both invalid email and password
     SignInPage.verifyInvalidCredentialPrompt();
   });
 
   it("Verify Login Attempt exceed", () => {
-    cy.Login(loginUser.email, "paSsword@098123");
+    cy.Login(loginUser.email, loginUser.invalidPassword);
     for (let i = 0; i < 4; i++) {
       SignInPage.clickLoginButton();
     }
