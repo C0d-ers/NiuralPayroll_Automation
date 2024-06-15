@@ -1,6 +1,6 @@
 class ClientListPage {
   locators = {
-    clientItem: ".sc-dhKdcB",
+    clientItem: ".sc-dhKdcB", // Locator for client list container, as this will catch if any new client is added
   };
 
   verifyCompanyDisplayed(companyName) {

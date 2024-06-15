@@ -4,14 +4,14 @@ class CompanyRegistrationAddressPage {
     companyDetailsHeader: "[data-cy='text-company-details']",
     appContentLayout: "#appContentLayout",
     registeredAddressCountry: "div:contains('CountryUnited States')",
-    addressLine1Input: "input[name='registeredAddress.address1']",
-    addressLine2Input: "input[name='registeredAddress.address2']",
-    cityInput: "input[name='registeredAddress.city']",
-    stateDropdown: ".css-ww1uop",
-    zipCodeInput: "input[name='registeredAddress.zipCode']",
+    addressLine1Input: '[data-cy="input-registeredAddress-address1"]',
+    addressLine2Input: '[data-cy="input-registeredAddress-address2"]',
+    cityInput: '[data-cy="input-registeredAddress-city"]',
+    stateDropdown: "#dropdown-state",
+    zipCodeInput: '[data-cy="input-registeredAddress-zipCode"',
     mailingAddressRadio: '[data-cy="button-isSameAddress"]',
-    backButton: 'button[data-cy="button-back"]',
-    submitButton: "button[type='submit']",
+    backButton: '[data-cy="button-back"]',
+    submitButton: '[data-cy="button-next"]',
   };
 
   texts = {

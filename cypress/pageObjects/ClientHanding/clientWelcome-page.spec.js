@@ -12,10 +12,11 @@ class ClientWelcomePage {
 
   locators = {
     appContentLayout: "#appContentLayout",
-    addClientButton: "button:contains('Add client')",
-    addClientHeading: "button:contains('Add Client')",
-    revenueSharingCheckBox: ".h-\\[60\\%\\]",
-    sideMenuClient: "a[data-cy='side-menu-Clients']",
+    addClientButton: '[data-cy="button-add-client"]',
+    addClientBillingOptionButton:
+      '[data-cy="button-add-client-billing-option"]',
+    revenueSharingCheckBox: '.bg-grey-primary input[type="radio"]',
+    sideMenuClient: "[data-cy='side-menu-Clients']",
   };
 
   verifyTextInAppContentLayout(text) {
@@ -33,7 +34,7 @@ class ClientWelcomePage {
   }
 
   clickAddClient() {
-    this.clickButtonWithText("Add client");
+    cy.get(this.locators.addClientButton).click();
   }
 
   verifyRevenueSharingTexts() {
@@ -43,7 +44,7 @@ class ClientWelcomePage {
   }
 
   clickRevenueSharingCheckBox() {
-    cy.get(this.locators.revenueSharingCheckBox).should("be.visible").click();
+    cy.get(this.locators.revenueSharingCheckBox).first().should("be.checked");
   }
 
   clickFinalAddClient() {

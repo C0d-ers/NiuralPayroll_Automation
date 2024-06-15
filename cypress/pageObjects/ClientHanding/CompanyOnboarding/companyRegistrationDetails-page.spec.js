@@ -3,11 +3,11 @@ class CompanyRegistrationDetailsPage {
     form: "form",
     countryOfRegistrationDropdown: "#dropdown-country-of-registration",
     countryOfRegistrationInput: "#react-select-2-input",
-    EINInput: 'input[name="EIN"]',
+    EINInput: '[data-cy="input-ein"]',
     registeredDateInput: "#date-registered-date",
     businessEntityTypeDropdown: "#dropdown-business-entity-type",
     natureOfBusinessDropdown: "#dropdown-nature-of-business",
-    submitButton: "button[type='submit']",
+    submitButton: '[data-cy="button-next"]',
   };
 
   // Define the texts to verify

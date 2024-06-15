@@ -1,11 +1,11 @@
 class SignInPage {
   locators = {
-    signInTitle: "h1",
-    emailField: "input[name='email']",
-    passwordField: 'input[name="password"]',
-    loginButton: "button[type='submit']",
+    emailField: '[data-cy="input-email"]',
+    passwordField: '[data-cy="input-password"]',
+    loginButton: '[data-cy="button-login"]',
     signUpLink: '[data-cy="button-signUp"]',
-    invalidCredentialMessage: "#root",
+    invalidCredentialMessage: '[data-slot="icon"]',
+    forgotPasscode: '[data-cy="link-forgot-password"]',
   };
 
   enterEmail(email) {
@@ -22,6 +22,10 @@ class SignInPage {
 
   clickSignUpButton() {
     cy.get(this.locators.signUpLink).click();
+  }
+
+  verifyHeaderDuringRoleLogin(role) {
+    cy.contains("Sign in as " + role).should("be.visible");
   }
 
   verifyInvalidCredentialPrompt() {
@@ -54,11 +58,6 @@ class SignInPage {
       "contain.text",
       "Login attempts exceeded"
     );
-  }
-  performLogin(email, password) {
-    this.enterEmail(email);
-    this.enterPassword(password);
-    this.clickLoginButton();
   }
 }
 
