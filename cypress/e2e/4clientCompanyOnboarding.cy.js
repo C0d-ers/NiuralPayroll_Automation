@@ -31,7 +31,7 @@ describe("Client Company Onboarding", () => {
     RoleSelectionPage.selectRole("Niural Partners");
 
     //login
-    SignInPage.performLogin(adminUser.email, adminUser.password);
+    cy.Login(adminUser.email, adminUser.password);
 
     // Verify successful login
     AccountantDashboardPage.verifyLogin(
