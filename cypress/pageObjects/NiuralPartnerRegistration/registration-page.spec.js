@@ -45,7 +45,7 @@ class RegistrationPage {
     cy.get(this.locators.companyWebsiteField).type(companyWebsite);
   }
 
-  selectBusinessClientsOption(optionText) {
+  selectBusinessClientsOption(noOfClients) {
     cy.get(this.locators.businessClientsDropdown).first().click();
 
     switch (noOfClients) {
