@@ -104,12 +104,7 @@ class RegistrationPage {
 
     cy.get(this.locators.accountExistsMessage)
       .should("be.visible")
-      .and(
-        "have.text",
-        "An account with " +
-          email +
-          " already existsPlease signin using this email."
-      );
+      .and("have.text", "An account with " + email + " already exists");
   }
 }
 
