@@ -6,5 +6,8 @@
   },
   "scripts": {
     "test:e2e": "cypress run --spec 'cypress/e2e/**/*.cy.js'"
+  },
+  "dependencies": {
+    "cypress-mailosaur": "^2.15.0"
   }
 }

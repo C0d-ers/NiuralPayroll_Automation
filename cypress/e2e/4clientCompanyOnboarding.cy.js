@@ -1,7 +1,6 @@
 // Importing page objects
 import RoleSelectionPage from "../pageObjects/Role/roleSelection-page.spec";
 import ClientWelcomePage from "../pageObjects/ClientHanding/clientWelcome-page.spec";
-import SignInPage from "../pageObjects/Role/signIn-page.spec";
 import ClientListPage from "../pageObjects/NiuralPartnerLogin/clientList-page.spec";
 import AccountantDashboardPage from "../pageObjects/NiuralPartnerLogin/accountantDashboard-page.spec";
 import CompanyRegistrationWelcomePage from "../pageObjects/ClientHanding/CompanyOnboarding/companyRegistrationWelcome-page.spec";
