@@ -5,7 +5,6 @@ import ClientListPage from "../pageObjects/NiuralPartnerLogin/clientList-page.sp
 import ClientOnboardingPage from "../pageObjects/ClientHanding/clientOnboarding-page.spec";
 
 import AccountantDashboardPage from "../pageObjects/NiuralPartnerLogin/accountantDashboard-page.spec";
-import { login } from "../support/commands";
 
 // Importing test data
 import { adminUser } from "../fixtures/NiuralPartnerUser_TestData";
@@ -17,7 +16,7 @@ describe("Client Management", () => {
 
     RoleSelectionPage.selectRole("Niural Partners");
 
-    login(adminUser.email, adminUser.password);
+    cy.Login(adminUser.email, adminUser.password);
     // Verify successful login
     AccountantDashboardPage.verifyLogin(
       adminUser.firstName,

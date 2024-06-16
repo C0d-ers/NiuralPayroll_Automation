@@ -1,19 +1,22 @@
 class RegistrationPage {
   // Element locators
   locators = {
-    firstNameField: 'input[name="firstName"]',
-    middleNameField: 'input[name="middleName"]',
-    lastNameField: 'input[name="lastName"]',
-    emailField: 'input[name="email"]',
-    companyNameField: 'input[name="companyName"]',
-    companyWebsiteField: 'input[name="companyWebsite"]',
-    businessClientsDropdown: ".css-1u6tjmp",
-    businessClientsOption: "#react-select-2-option-2",
-    passwordField: 'input[name="password"]',
-    confirmPasswordField: 'input[name="confirmPassword"]',
-    phoneNumberField: "input[name='phoneNumber']",
-    nextButton: "button[type='submit']",
-    accountExistsMessage: ".space-y-2.text-center",
+    firstNameField: '[data-cy="input-first-name"]',
+    middleNameField: '[data-cy="input-middle-name"]',
+    lastNameField: '[data-cy="input-last-name"]',
+    emailField: '[data-cy="input-email"]',
+    companyNameField: '[data-cy="input-company-name"]',
+    companyWebsiteField: '[data-cy="input-company-website"]',
+    businessClientsDropdown: "#select-business-clients-number",
+    businessClientsOption_1Client: "#react-select-2-option-0",
+    businessClientsOption_0_4Clients: "#react-select-2-option-1",
+    businessClientsOption_5_10Clients: "#react-select-2-option-2",
+    businessClientsOption_10PlusClients: "#react-select-2-option-3",
+    passwordField: '[data-cy="input-password"]',
+    confirmPasswordField: '[data-cy="input-confirm-password"]',
+    phoneNumberField: '[data-cy="input-phone-number"]',
+    nextButton: '[data-cy="button-next"]',
+    accountExistsMessage: ".button1",
     termsOfServiceLink: 'a:contains("Terms of Service")',
     privacyPolicyLink: 'a:contains("Privacy Policy")',
   };
@@ -42,9 +45,27 @@ class RegistrationPage {
     cy.get(this.locators.companyWebsiteField).type(companyWebsite);
   }
 
-  selectBusinessClientsOption(optionText) {
+  selectBusinessClientsOption(noOfClients) {
     cy.get(this.locators.businessClientsDropdown).first().click();
-    cy.contains(this.locators.businessClientsOption, optionText).click();
+
+    switch (noOfClients) {
+      case "1 Client":
+        cy.get(this.locators.businessClientsOption_1Client).click();
+        break;
+      case "0-4 Clients":
+        cy.get(this.locators.businessClientsOption_0_4Clients).click();
+        break;
+      case "5-10 Clients":
+        cy.get(this.locators.businessClientsOption_5_10Clients).click();
+        break;
+      case "10+ Clients":
+        cy.get(this.locators.businessClientsOption_10PlusClients)
+          .last()
+          .click();
+        break;
+      default:
+        throw new Error(`Invalid number of clients : ${noOfClients}`);
+    }
   }
 
   enterPassword(password) {
@@ -83,12 +104,7 @@ class RegistrationPage {
 
     cy.get(this.locators.accountExistsMessage)
       .should("be.visible")
-      .and(
-        "have.text",
-        "An account with " +
-          email +
-          " already existsPlease signin using this email."
-      );
+      .and("have.text", "An account with " + email + " already exists");
   }
 }
 
