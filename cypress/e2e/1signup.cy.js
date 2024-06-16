@@ -24,7 +24,7 @@ describe("Registration", () => {
     // Code to run after all tests in the suite
   });
 
-  it.only("Verify Registration with valid user details", () => {
+  it("Verify Registration with valid user details", () => {
     RegistrationPage.interceptSignUpRequest();
     VerificationPage.interceptOTPVerificationRequest();
     //Enter the user's details
@@ -44,12 +44,8 @@ describe("Registration", () => {
     //Verify the response
     RegistrationPage.validateValidSignUpRequest();
 
-    //Get OTP by using the commands, located in support folder.
-    cy.wait(4000);
-    cy.signInAndGetOTP();
-
-    // Assert OTP is fetched
-    cy.get("@code").then((otp) => {
+    // Fetching using OTP from commands with the help of mailosaur SDK
+    cy.getOtp(registerUser.email).then((otp) => {
       expect(otp).to.not.be.empty; // Assert OTP is not empty
       VerificationPage.enterOTP(otp);
     });
