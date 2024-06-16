@@ -25,6 +25,8 @@ describe("Registration", () => {
   });
 
   it("Verify Registration with valid user details", () => {
+    RegistrationPage.interceptSignUpRequest();
+    VerificationPage.interceptOTPVerificationRequest();
     //Enter the user's details
     RegistrationPage.enterFirstName(registerUser.firstName);
     RegistrationPage.enterMiddleName(registerUser.middleName);
@@ -39,15 +41,11 @@ describe("Registration", () => {
     RegistrationPage.enterConfirmPassword(registerUser.password);
     RegistrationPage.enterPhoneNumber(registerUser.phoneNumber);
     RegistrationPage.clickNextButton();
+    //Verify the response
+    RegistrationPage.validateValidSignUpRequest();
 
-    //Wait, since api loads faster than the mail
-    cy.wait(5000);
-
-    //Get OTP by using the commands, located in support folder.
-    cy.signInAndGetOTP();
-
-    // Assert OTP is fetched
-    cy.get("@code").then((otp) => {
+    // Fetching using OTP from commands with the help of mailosaur SDK
+    cy.getOtp(registerUser.email).then((otp) => {
       expect(otp).to.not.be.empty; // Assert OTP is not empty
       VerificationPage.enterOTP(otp);
     });
@@ -55,6 +53,7 @@ describe("Registration", () => {
     //Submit the otp
     VerificationPage.clickSubmit();
 
+    VerificationPage.validateValidOTPVerificationRequest();
     // Verify successful registration
     AccountantDashboardPage.verifyLogin(
       registerUser.firstName,
@@ -64,20 +63,21 @@ describe("Registration", () => {
 
   it("Verify Registration with existing user details", () => {
     //Enter the user's details
-    RegistrationPage.enterFirstName(registerUser.firstName);
-    RegistrationPage.enterMiddleName(registerUser.middleName);
-    RegistrationPage.enterLastName(registerUser.lastName);
-    RegistrationPage.enterEmail(registerUser.email);
-    RegistrationPage.enterCompanyName(registerUser.companyName);
-    RegistrationPage.enterCompanyWebsite(registerUser.companyWebsite);
-    RegistrationPage.selectBusinessClientsOption(
-      registerUser.businessClientsOption
-    );
-    RegistrationPage.enterPassword(registerUser.password);
-    RegistrationPage.enterConfirmPassword(registerUser.password);
-    RegistrationPage.enterPhoneNumber(registerUser.phoneNumber);
+    RegistrationPage.interceptSignUpRequest();
+    cy.Signup_NiuralPartner_CreateAccount({
+      firstName: registerUser.firstName,
+      middleName: registerUser.middleName,
+      lastName: registerUser.lastName,
+      email: registerUser.email,
+      companyName: registerUser.companyName,
+      companyWebsite: registerUser.companyWebsite,
+      businessClientsOption: registerUser.businessClientsOption,
+      password: registerUser.password,
+      confirmPassword: registerUser.password,
+      phoneNumber: registerUser.phoneNumber,
+    });
 
-    RegistrationPage.clickNextButton();
+    RegistrationPage.validateEmailExistsSignUpRequest();
     RegistrationPage.verifyAccountAlreadyExistsPopup(registerUser.email);
   });
 

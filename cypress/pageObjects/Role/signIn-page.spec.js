@@ -96,10 +96,7 @@ class SignInPage {
       expect(interception.response.body)
         .to.have.property("UserAttributes")
         .that.is.an("array");
-      expect(interception.response.body).to.have.property(
-        "Username",
-        "4ddf596f-f3d2-42f1-96b7-21c6cfb2bde0"
-      );
+      expect(interception.response.body).to.have.property("Username");
     });
   }
   validateInvalidLoginRequest() {

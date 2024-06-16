@@ -106,6 +106,67 @@ class RegistrationPage {
       .should("be.visible")
       .and("have.text", "An account with " + email + " already exists");
   }
+  interceptSignUpRequest() {
+    cy.intercept("POST", "https://cognito-idp.us-east-1.amazonaws.com/").as(
+      "signupRequest"
+    );
+  }
+  validateEmailExistsSignUpRequest() {
+    //verification of the first API called during the login
+    cy.wait("@signupRequest").then((interception) => {
+      // Debugging: log the interception object to ensure it's as expected
+      cy.log("Interception Object:", interception);
+      console.log("Interception Object:", interception);
+
+      // Ensure interception.response is defined
+      expect(interception.response).to.not.be.undefined;
+      // Ensure interception.response.body is defined
+      expect(interception.response.body).to.not.be.undefined;
+
+      // Assert the HTTP method used for login
+      expect(interception.request.method).to.eq("POST");
+      // Assert the response status
+      expect(interception.response.statusCode).to.eq(400);
+
+      // Assert the response body contains the error message
+      expect(interception.response.body).to.have.property(
+        "__type",
+        "UsernameExistsException"
+      );
+      expect(interception.response.body).to.have.property(
+        "message",
+        "An account with the given email already exists."
+      );
+    });
+  }
+
+  validateValidSignUpRequest() {
+    //verification of the first API called during the login
+    cy.wait("@signupRequest").then((interception) => {
+      // Debugging: log the interception object to ensure it's as expected
+      cy.log("Interception Object:", interception);
+      console.log("Interception Object:", interception);
+
+      // Ensure interception.response is defined
+      expect(interception.response).to.not.be.undefined;
+      // Ensure interception.response.body is defined
+      expect(interception.response.body).to.not.be.undefined;
+
+      // Assert the HTTP method used for login
+      expect(interception.request.method).to.eq("POST");
+      // Assert the response status
+      expect(interception.response.statusCode).to.eq(200);
+
+      // Verify CodeDeliveryDetails attributes
+      expect(interception.response.body).to.have.property(
+        "CodeDeliveryDetails"
+      );
+      const codeDeliveryDetails =
+        interception.response.body.CodeDeliveryDetails;
+      expect(codeDeliveryDetails).to.have.property("AttributeName", "email");
+      expect(codeDeliveryDetails).to.have.property("DeliveryMedium", "EMAIL");
+    });
+  }
 }
 
 export default new RegistrationPage();
