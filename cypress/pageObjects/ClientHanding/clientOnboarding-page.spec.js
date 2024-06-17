@@ -103,6 +103,45 @@ class ClientOnboardingPage {
   verifySuccessfulToast() {
     cy.get(this.locators.toast).should("be.visible");
   }
+  interceptProfilePostRequest() {
+    cy.intercept(
+      "POST",
+      "https://nvvbbcice1.execute-api.us-east-1.amazonaws.com/qa/profile"
+    ).as("profilePost");
+  }
+  validateProfilePostRequest(
+    expectedCompanyName,
+    expectedDBAName,
+    expectedFirstName,
+    expectedLastName,
+    expectedEmail,
+    expectedCompanyWebsite,
+    expectedPhoneNumber
+  ) {
+    //verification of the first API called during the login
+    cy.wait("@profilePost").then((interception) => {
+      const request = interception.request;
+      const response = interception.response.body;
+
+      // Check request body
+      expect(request.body.companyName).to.equal(expectedCompanyName);
+      expect(request.body.email).to.equal(expectedEmail);
+      expect(request.body.firstName).to.equal(expectedFirstName);
+      expect(request.body.lastName).to.equal(expectedLastName);
+      expect(request.body.companyWebsite).to.contain(expectedCompanyWebsite);
+      expect(request.body.phoneNumber).to.equal(expectedPhoneNumber);
+      expect(request.body.DBAName).to.equal(expectedDBAName);
+
+      // Check response body
+      expect(response.message).to.equal("Success");
+      expect(response.data.company_name).to.equal(expectedCompanyName);
+      expect(response.data.email).to.equal(expectedEmail);
+      expect(response.data.first_name).to.equal(expectedFirstName);
+      expect(response.data.last_name).to.equal(expectedLastName);
+      expect(response.data.company_website).to.contain(expectedCompanyWebsite);
+      expect(response.data.phone_number).to.equal(expectedPhoneNumber);
+    });
+  }
 }
 
 export default new ClientOnboardingPage();

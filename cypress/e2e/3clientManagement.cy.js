@@ -3,7 +3,7 @@ import RoleSelectionPage from "../pageObjects/Role/roleSelection-page.spec";
 import ClientWelcomePage from "../pageObjects/ClientHanding/clientWelcome-page.spec";
 import ClientListPage from "../pageObjects/NiuralPartnerLogin/clientList-page.spec";
 import ClientOnboardingPage from "../pageObjects/ClientHanding/clientOnboarding-page.spec";
-
+import "../support/commands";
 import AccountantDashboardPage from "../pageObjects/NiuralPartnerLogin/accountantDashboard-page.spec";
 
 // Importing test data
@@ -24,7 +24,7 @@ describe("Client Management", () => {
     );
   });
 
-  it("Addition of new client", () => {
+  it.only("Addition of new client", () => {
     // Verify text on client welcome page
     ClientWelcomePage.verifyAddClientTexts();
     // Click on 'Add Client' button
@@ -38,6 +38,7 @@ describe("Client Management", () => {
     ClientWelcomePage.clickFinalAddClient();
 
     // Fill client details
+    ClientOnboardingPage.interceptProfilePostRequest();
     ClientOnboardingPage.fillCompanyName(clientRegistration.companyName);
     ClientOnboardingPage.fillDBAName(clientRegistration.dbaName);
     ClientOnboardingPage.fillNumberOfCurrentEmployees(
@@ -58,6 +59,15 @@ describe("Client Management", () => {
       clientRegistration.phoneNumber
     );
     ClientOnboardingPage.clickNextButton();
+    ClientOnboardingPage.validateProfilePostRequest(
+      clientRegistration.companyName,
+      clientRegistration.dbaName,
+      clientRegistration.firstName,
+      clientRegistration.lastName,
+      clientRegistration.email,
+      clientRegistration.companyWebsite,
+      clientRegistration.phoneExtension + clientRegistration.phoneNumber
+    );
     ClientOnboardingPage.verifySuccessfulToast();
   });
 
